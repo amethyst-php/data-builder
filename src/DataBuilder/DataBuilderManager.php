@@ -2,9 +2,11 @@
 
 namespace Railken\LaraOre\DataBuilder;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Contracts\AgentContract;
 use Railken\Laravel\Manager\ModelManager;
+use Railken\Laravel\Manager\Result;
 use Railken\Laravel\Manager\Tokens;
 
 class DataBuilderManager extends ModelManager
@@ -65,5 +67,44 @@ class DataBuilderManager extends ModelManager
         $this->setValidator(new $classValidator($this));
 
         parent::__construct($agent);
+    }
+
+    /**
+     * Render an email.
+     *
+     * @param DataBuilder $builder
+     * @param array       $data
+     *
+     * @return \Railken\Laravel\Manager\Contracts\ResultContract
+     */
+    public function build(DataBuilder $builder, array $data = [])
+    {
+        $repository = $builder->repository;
+        $input = $builder->input;
+
+        if ($data === null) {
+            $data = $builder->mock_data;
+        }
+
+        $result = new Result();
+        $result->addErrors($this->getValidator()->raw((array) $input, $data));
+
+        if (!$result->ok()) {
+            return $result;
+        }
+
+        try {
+            $query = $repository->newInstanceQuery($data);
+
+            $data = new Collection($data);
+            $data = $data->merge($repository->parse($query->get()));
+
+            $result->setResources(new Collection([$data]));
+        } catch (\PDOException | \Railken\SQ\Exceptions\QuerySyntaxException $e) {
+            $e = new Exceptions\DataBuilderBuildException($e->getMessage());
+            $result->addErrors(new Collection([$e]));
+        }
+
+        return $result;
     }
 }

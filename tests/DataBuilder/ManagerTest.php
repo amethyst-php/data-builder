@@ -42,4 +42,19 @@ class ManagerTest extends BaseTest
 
         $this->assertEquals(1, $errors->count());
     }
+
+    public function testBuild()
+    {
+        $result = $this->getManager()->build($this->getManager()->create(DataBuilderFaker::make()->parameters())->getResource(), [
+            'date' => '2018-01-01',
+        ]);
+
+        $this->assertEquals(true, $result->ok());
+
+        $result = $this->getManager()->build($this->getManager()->create(DataBuilderFaker::make()->parameters()->set('repository.filter', 'eq error'))->getResource(), [
+            'date' => '2018-01-01',
+        ]);
+
+        $this->assertEquals(false, $result->ok());
+    }
 }
