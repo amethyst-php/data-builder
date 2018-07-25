@@ -41,6 +41,12 @@ class ManagerTest extends BaseTest
         ]);
 
         $this->assertEquals(1, $errors->count());
+
+        $result = $this->getManager()->validateRaw($this->getManager()->create(DataBuilderFaker::make()->parameters())->getResource(), [
+            'date' => '2018-01-',
+        ]);
+
+        $this->assertEquals(true, $result->ok());
     }
 
     public function testBuild()

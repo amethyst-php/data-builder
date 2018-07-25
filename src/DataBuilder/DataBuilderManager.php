@@ -70,6 +70,22 @@ class DataBuilderManager extends ModelManager
     }
 
     /**
+     * Validate data.
+     *
+     * @param DataBuilder $builder
+     * @param array       $data
+     *
+     * @return \Railken\Laravel\Manager\Contracts\ResultContract
+     */
+    public function validateRaw(DataBuilder $builder, array $data = [])
+    {
+        $result = new Result();
+        $result->addErrors($this->getValidator()->raw((array) $builder->input, $data));
+
+        return $result;
+    }
+
+    /**
      * Render an email.
      *
      * @param DataBuilder $builder
@@ -86,12 +102,7 @@ class DataBuilderManager extends ModelManager
             $data = $builder->mock_data;
         }
 
-        $result = new Result();
-        $result->addErrors($this->getValidator()->raw((array) $input, $data));
-
-        if (!$result->ok()) {
-            return $result;
-        }
+        $result = $this->validateRaw($builder, (array) $data);
 
         try {
             $query = $repository->newInstanceQuery($data);
