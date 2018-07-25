@@ -5,7 +5,6 @@ namespace Railken\LaraOre\DataBuilder\Attributes\RepositoryId;
 use Railken\Laravel\Manager\Attributes\BelongsToAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
-use Respect\Validation\Validator as v;
 
 class RepositoryIdAttribute extends BelongsToAttribute
 {
@@ -64,7 +63,7 @@ class RepositoryIdAttribute extends BelongsToAttribute
     /**
      * Retrieve eloquent relation.
      *
-     * @param \Railken\LaraOre\FileGenerator\FileGenerator $entity
+     * @param \Railken\LaraOre\DataBuilder\DataBuilder $entity
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -76,7 +75,7 @@ class RepositoryIdAttribute extends BelongsToAttribute
     /**
      * Retrieve relation manager.
      *
-     * @param \Railken\LaraOre\FileGenerator\FileGenerator $entity
+     * @param \Railken\LaraOre\DataBuilder\DataBuilder $entity
      *
      * @return \Railken\Laravel\Manager\Contracts\ManagerContract
      */

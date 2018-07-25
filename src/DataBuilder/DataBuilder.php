@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Config;
 use Railken\LaraOre\Repository\Repository;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 
+/**
+ * @property string     $name
+ * @property string     $description
+ * @property object     $mock_data
+ * @property object     $input
+ * @property Repository $repository
+ */
 class DataBuilder extends Model implements EntityContract
 {
     use SoftDeletes;
