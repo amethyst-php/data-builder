@@ -107,8 +107,7 @@ class DataBuilderManager extends ModelManager
         try {
             $query = $repository->newInstanceQuery($data);
 
-            $data = new Collection($data);
-            $data = $data->merge($repository->parse($query->get()));
+            $data = array_merge($data, (array) $repository->parse($query->get()));
 
             $result->setResources(new Collection([$data]));
         } catch (\PDOException | \Railken\SQ\Exceptions\QuerySyntaxException $e) {
