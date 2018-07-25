@@ -24,4 +24,22 @@ class ManagerTest extends BaseTest
     {
         $this->commonTest($this->getManager(), DataBuilderFaker::make()->parameters());
     }
+
+    public function testValidate()
+    {
+        $errors = $this->getManager()->getValidator()->raw([
+            'date' => 'date_format:Y-m-d',
+        ], [
+            'date' => '2018-01-01',
+        ]);
+        $this->assertEquals(0, $errors->count());
+
+        $errors = $this->getManager()->getValidator()->raw([
+            'date' => 'date_format:Y-m-d',
+        ], [
+            'date' => '2018-01-',
+        ]);
+
+        $this->assertEquals(1, $errors->count());
+    }
 }
