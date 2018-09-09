@@ -107,7 +107,7 @@ return [
             'enabled'    => true,
             'controller' => Railken\LaraOre\Http\Controllers\Admin\DataBuildersController::class,
             'router'     => [
-                'prefix'      => '/admin/data-builders',
+                'prefix'      => '/data-builders',
             ],
         ],
     ],
