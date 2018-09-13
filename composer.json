@@ -9,7 +9,6 @@
         "fzaninotto/faker": "^1.7",
         "railken/lara-ore-api": "dev-master",
         "railken/lara-ore-support": "dev-master",
-        "railken/lara-ore-template": "dev-master",
         "railken/lara-ore-repository": "dev-master"
     },
     "require-dev": {

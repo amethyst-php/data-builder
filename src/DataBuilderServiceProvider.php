@@ -31,7 +31,6 @@ class DataBuilderServiceProvider extends ServiceProvider
     {
         $this->app->register(\Railken\Laravel\Manager\ManagerServiceProvider::class);
         $this->app->register(\Railken\LaraOre\ApiServiceProvider::class);
-        $this->app->register(\Railken\LaraOre\TemplateServiceProvider::class);
         $this->app->register(\Railken\LaraOre\RepositoryServiceProvider::class);
         $this->mergeConfigFrom(__DIR__.'/../config/ore.data-builder.php', 'ore.data-builder');
     }
