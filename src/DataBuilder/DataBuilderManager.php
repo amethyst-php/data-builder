@@ -2,6 +2,7 @@
 
 namespace Railken\LaraOre\DataBuilder;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Railken\Laravel\Manager\Contracts\AgentContract;
@@ -79,8 +80,12 @@ class DataBuilderManager extends ModelManager
      */
     public function validateRaw(DataBuilder $builder, array $data = [])
     {
+        $schema = Collection::make($builder->input)->map(function ($value) {
+            return Arr::get((array) $value, 'validation');
+        })->toArray();
+
         $result = new Result();
-        $result->addErrors($this->getValidator()->raw((array) $builder->input, $data));
+        $result->addErrors($this->getValidator()->raw($schema, $data));
 
         return $result;
     }

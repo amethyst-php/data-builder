@@ -26,10 +26,13 @@ class DataBuilderFaker extends BaseFaker
         $bag->set('description', $faker->text);
         $bag->set('repository', RepositoryFaker::make()->parameters()->toArray());
         $bag->set('input', [
-            'name' => 'string',
+            'date' => [
+                'type'       => 'date',
+                'validation' => 'date_format:Y-m-d',
+            ],
         ]);
         $bag->set('mock_data', [
-            'name' => 'adc',
+            'date' => '2018-01-01',
         ]);
 
         return $bag;
