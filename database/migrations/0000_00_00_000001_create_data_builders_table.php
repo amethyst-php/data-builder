@@ -12,12 +12,12 @@ class CreateDataBuildersTable extends Migration
      */
     public function up()
     {
-        Schema::create(Config::get('ore.data-builder.table'), function (Blueprint $table) {
+        Schema::create(Config::get('amethyst.data-builder.managers.data-builder.table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->integer('repository_id')->unsigned()->nullable();
-            $table->foreign('repository_id')->references('id')->on(Config::get('ore.repository.table'));
+            $table->foreign('repository_id')->references('id')->on(Config::get('amethyst.repository.managers.repository.table'));
             $table->text('input')->nullable();
             $table->text('mock_data')->nullable();
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreateDataBuildersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(Config::get('ore.data-builder.table'));
+        Schema::dropIfExists(Config::get('amethyst.data-builder.managers.data-builder.table'));
     }
 }
