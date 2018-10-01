@@ -57,7 +57,6 @@ class DataBuilderManager extends Manager
      */
     public function build(DataBuilder $builder, array $data = [])
     {
-        $repository = $builder->repository;
         $input = $builder->input;
 
         if ($data === null) {
@@ -67,9 +66,9 @@ class DataBuilderManager extends Manager
         $result = $this->validateRaw($builder, (array) $data);
 
         try {
-            $query = $repository->newInstanceQuery($data);
+            $query = $builder->newInstanceQuery((array) $data);
 
-            $data = array_merge($data, (array) $repository->parse($query->get()));
+            $data = array_merge($data, (array) $builder->parse($query->get()));
 
             $result->setResources(new Collection([$data]));
         } catch (\PDOException | \Railken\SQ\Exceptions\QuerySyntaxException $e) {

@@ -16,10 +16,10 @@ class CreateDataBuildersTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
-            $table->integer('repository_id')->unsigned()->nullable();
-            $table->foreign('repository_id')->references('id')->on(Config::get('amethyst.repository.managers.repository.table'));
             $table->text('input')->nullable();
             $table->text('mock_data')->nullable();
+            $table->string('class_name');
+            $table->text('filter')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

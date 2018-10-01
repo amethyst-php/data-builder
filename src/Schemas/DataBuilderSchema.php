@@ -2,7 +2,6 @@
 
 namespace Railken\Amethyst\Schemas;
 
-use Railken\Amethyst\Managers\RepositoryManager;
 use Railken\Lem\Attributes;
 use Railken\Lem\Schema;
 
@@ -21,9 +20,9 @@ class DataBuilderSchema extends Schema
                 ->setRequired(true)
                 ->setUnique(true),
             Attributes\LongTextAttribute::make('description'),
-            Attributes\BelongsToAttribute::make('repository_id')
-                ->setRelationName('repository')
-                ->setRelationManager(RepositoryManager::class),
+            Attributes\TextAttribute::make('filter'),
+            Attributes\ClassNameAttribute::make('class_name', [\Railken\Amethyst\Contracts\DataBuilderContract::class])
+                ->setRequired(true),
             Attributes\ObjectAttribute::make('mock_data'),
             Attributes\ObjectAttribute::make('input'),
             Attributes\CreatedAtAttribute::make(),

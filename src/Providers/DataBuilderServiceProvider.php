@@ -13,7 +13,6 @@ class DataBuilderServiceProvider extends CommonServiceProvider
     {
         parent::register();
 
-        $this->app->register(\Railken\Amethyst\Providers\RepositoryServiceProvider::class);
         $this->app->register(\Railken\Template\TemplateServiceProvider::class);
     }
 }

@@ -18,7 +18,8 @@ class DataBuilderFaker extends Faker
         $bag = new Bag();
         $bag->set('name', $faker->name);
         $bag->set('description', $faker->text);
-        $bag->set('repository', RepositoryFaker::make()->parameters()->toArray());
+        $bag->set('class_name', \Railken\Amethyst\DataBuilders\DummyDataBuilder::class);
+        $bag->set('filter', 'id eq 1');
         $bag->set('input', [
             'date' => [
                 'type'       => 'date',

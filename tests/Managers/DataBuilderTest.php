@@ -57,7 +57,7 @@ class DataBuilderTest extends BaseTest
 
         $this->assertEquals(true, $result->ok());
 
-        $result = $this->getManager()->build($this->getManager()->create(DataBuilderFaker::make()->parameters()->set('repository.filter', 'eq error'))->getResource(), [
+        $result = $this->getManager()->build($this->getManager()->create(DataBuilderFaker::make()->parameters()->set('filter', 'eq error'))->getResource(), [
             'date' => '2018-01-01',
         ]);
 
