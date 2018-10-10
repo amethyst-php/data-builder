@@ -68,7 +68,7 @@ class DataBuilderManager extends Manager
         try {
             $query = $builder->newInstanceQuery((array) $data);
 
-            $data = array_merge($data, $builder->parse($query->get())->toArray());
+            $data = array_merge($data, $builder->parse($query->get())->all());
 
             $result->setResources(new Collection([$data]));
         } catch (\PDOException | \Railken\SQ\Exceptions\QuerySyntaxException $e) {
