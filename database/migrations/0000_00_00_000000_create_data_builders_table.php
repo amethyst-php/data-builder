@@ -12,7 +12,7 @@ class CreateDataBuildersTable extends Migration
      */
     public function up()
     {
-        Schema::create(Config::get('amethyst.data-builder.managers.data-builder.table'), function (Blueprint $table) {
+        Schema::create(Config::get('amethyst.data-builder.data.data-builder.table'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
@@ -30,6 +30,6 @@ class CreateDataBuildersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(Config::get('amethyst.data-builder.managers.data-builder.table'));
+        Schema::dropIfExists(Config::get('amethyst.data-builder.data.data-builder.table'));
     }
 }

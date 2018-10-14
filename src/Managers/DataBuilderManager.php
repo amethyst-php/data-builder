@@ -4,7 +4,7 @@ namespace Railken\Amethyst\Managers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Config;
+use Railken\Amethyst\Common\ConfigurableManager;
 use Railken\Amethyst\Exceptions;
 use Railken\Amethyst\Models\DataBuilder;
 use Railken\Lem\Manager;
@@ -12,20 +12,12 @@ use Railken\Lem\Result;
 
 class DataBuilderManager extends Manager
 {
-    /**
-     * Describe this manager.
-     *
-     * @var string
-     */
-    public $comment = '...';
+    use ConfigurableManager;
 
     /**
-     * Register Classes.
+     * @var string
      */
-    public function registerClasses()
-    {
-        return Config::get('amethyst.data-builder.managers.data-builder');
-    }
+    protected $config = 'amethyst.data-builder.data.data-builder';
 
     /**
      * Validate data.
