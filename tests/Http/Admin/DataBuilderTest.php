@@ -25,9 +25,9 @@ class DataBuilderTest extends BaseTest
     protected $group = 'admin';
 
     /**
-     * Base path config.
+     * Route name.
      *
      * @var string
      */
-    protected $config = 'amethyst.data-builder.http.admin.data-builder';
+    protected $route = 'admin.data-builder';
 }
