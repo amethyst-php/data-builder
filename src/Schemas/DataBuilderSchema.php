@@ -21,8 +21,7 @@ class DataBuilderSchema extends Schema
                 ->setUnique(true),
             Attributes\LongTextAttribute::make('description'),
             Attributes\TextAttribute::make('filter'),
-            Attributes\ClassNameAttribute::make('class_name', [\Railken\Amethyst\Contracts\DataBuilderContract::class])
-                ->setRequired(true),
+            Attributes\ClassNameAttribute::make('class_name', [\Railken\Amethyst\Contracts\DataBuilderContract::class]),
             Attributes\ObjectAttribute::make('mock_data'),
             Attributes\ObjectAttribute::make('input'),
             Attributes\CreatedAtAttribute::make(),

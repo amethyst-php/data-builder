@@ -63,4 +63,14 @@ class DataBuilderTest extends BaseTest
 
         $this->assertEquals(false, $result->ok());
     }
+
+    public function testClassNameNull()
+    {
+        $result = $this->getManager()->build($this->getManager()->create(DataBuilderFaker::make()->parameters()->set('class_name', null))->getResource(), [
+            'date' => '2018-01-01',
+        ]);
+
+        $this->assertEquals(true, $result->ok());
+
+    }
 }

@@ -58,9 +58,12 @@ class DataBuilderManager extends Manager
         $result = $this->validateRaw($builder, (array) $data);
 
         try {
-            $query = $builder->newInstanceQuery((array) $data);
 
-            $data = array_merge($data, $builder->parse($query->get())->all());
+            if ($builder->class_name !== null) {
+                $query = $builder->newInstanceQuery((array) $data);
+
+                $data = array_merge($data, $builder->parse($query->get())->all());
+            }
 
             $result->setResources(new Collection([$data]));
         } catch (\PDOException | \Railken\SQ\Exceptions\QuerySyntaxException $e) {
