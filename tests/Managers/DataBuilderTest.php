@@ -71,6 +71,5 @@ class DataBuilderTest extends BaseTest
         ]);
 
         $this->assertEquals(true, $result->ok());
-
     }
 }

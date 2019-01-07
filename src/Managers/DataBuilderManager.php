@@ -9,6 +9,7 @@ use Railken\Amethyst\Exceptions;
 use Railken\Amethyst\Models\DataBuilder;
 use Railken\Lem\Manager;
 use Railken\Lem\Result;
+use Symfony\Component\Yaml\Yaml;
 
 class DataBuilderManager extends Manager
 {
@@ -29,7 +30,7 @@ class DataBuilderManager extends Manager
      */
     public function validateRaw(DataBuilder $builder, array $data = [])
     {
-        $schema = Collection::make($builder->input)->map(function ($value) {
+        $schema = Collection::make(Yaml::parse($builder->input))->map(function ($value) {
             return Arr::get((array) $value, 'validation');
         })->toArray();
 
@@ -49,16 +50,15 @@ class DataBuilderManager extends Manager
      */
     public function build(DataBuilder $builder, array $data = [])
     {
-        $input = $builder->input;
+        $input = Yaml::parse($builder->input);
 
         if ($data === null) {
-            $data = $builder->mock_data;
+            $data = Yaml::parse($builder->mock_data);
         }
 
         $result = $this->validateRaw($builder, (array) $data);
 
         try {
-
             if ($builder->class_name !== null) {
                 $query = $builder->newInstanceQuery((array) $data);
 
