@@ -22,6 +22,7 @@ class DataBuilderSchema extends Schema
             Attributes\LongTextAttribute::make('description'),
             Attributes\TextAttribute::make('filter'),
             Attributes\ClassNameAttribute::make('class_name', [\Railken\Amethyst\Contracts\DataBuilderContract::class]),
+            Attributes\YamlAttribute::make('class_arguments'),
             Attributes\YamlAttribute::make('mock_data'),
             Attributes\YamlAttribute::make('input'),
             Attributes\CreatedAtAttribute::make(),

@@ -10,6 +10,7 @@ use Railken\Amethyst\Common\ConfigurableModel;
 use Railken\LaraEye\Filter;
 use Railken\Lem\Contracts\EntityContract;
 use Railken\Template\Generators\TextGenerator;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * @property object $input
@@ -80,6 +81,10 @@ class DataBuilder extends Model implements EntityContract
      */
     public function newInstanceData()
     {
-        return new $this->class_name();
+        $className = $this->class_name;
+
+        $arguments = (array) Yaml::parse($this->class_arguments);
+
+        return new $className(...$arguments);
     }
 }

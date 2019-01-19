@@ -19,6 +19,7 @@ class CreateDataBuildersTable extends Migration
             $table->text('input')->nullable();
             $table->text('mock_data')->nullable();
             $table->string('class_name')->nullable();
+            $table->text('class_arguments')->nullable();
             $table->text('filter')->nullable();
             $table->timestamps();
             $table->softDeletes();
