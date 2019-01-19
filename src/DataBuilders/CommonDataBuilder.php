@@ -3,11 +3,10 @@
 namespace Railken\Amethyst\DataBuilders;
 
 use Closure;
+use Doctrine\Common\Inflector\Inflector;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Railken\Amethyst\Contracts\DataBuilderContract;
-use Railken\Amethyst\Managers\DataBuilderManager;
-use Doctrine\Common\Inflector\Inflector;
 use Railken\Lem\Contracts\ManagerContract;
 
 class CommonDataBuilder implements DataBuilderContract
@@ -28,10 +27,10 @@ class CommonDataBuilder implements DataBuilderContract
     public function __construct($classManager)
     {
         if (!is_subclass_of($classManager, ManagerContract::class)) {
-            throw new \Exception(sprintf("%s is invalid", $classManager));
+            throw new \Exception(sprintf('%s is invalid', $classManager));
         }
 
-        $this->manager = new $classManager();
+        $this->manager   = new $classManager();
         $this->inflector = new Inflector();
     }
 
@@ -81,7 +80,7 @@ class CommonDataBuilder implements DataBuilderContract
     }
 
     /**
-     * Return the name of the variable that will be used from the data builder
+     * Return the name of the variable that will be used from the data builder.
      *
      * @return string
      */

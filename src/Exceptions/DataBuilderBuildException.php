@@ -22,8 +22,8 @@ class DataBuilderBuildException extends ModelException
      */
     public function __construct($key, $message = null, $value = null)
     {
-        $this->value = $value;
-        $this->label = $key;
+        $this->value   = $value;
+        $this->label   = $key;
         $this->message = $message;
 
         parent::__construct();

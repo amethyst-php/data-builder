@@ -16,6 +16,7 @@ use Symfony\Component\Yaml\Yaml;
  * @property object $input
  * @property object $mock_data
  * @property string $class_name
+ * @property string $class_arguments
  */
 class DataBuilder extends Model implements EntityContract
 {
@@ -44,7 +45,7 @@ class DataBuilder extends Model implements EntityContract
     {
         $tm = new TextGenerator();
 
-        $r = $this->newInstanceData();
+        $r     = $this->newInstanceData();
         $query = $r->newQuery();
 
         if (!empty($this->filter)) {
