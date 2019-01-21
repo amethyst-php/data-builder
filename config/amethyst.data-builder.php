@@ -35,11 +35,11 @@ return [
     'http' => [
         'admin' => [
             'data-builder' => [
-                'enabled'     => true,
-                'controller'  => Railken\Amethyst\Http\Controllers\Admin\DataBuildersController::class,
-                'router'      => [
-                    'as'        => 'data-builder.',
-                    'prefix'    => '/data-builders',
+                'enabled'    => true,
+                'controller' => Railken\Amethyst\Http\Controllers\Admin\DataBuildersController::class,
+                'router'     => [
+                    'as'     => 'data-builder.',
+                    'prefix' => '/data-builders',
                 ],
             ],
         ],

@@ -45,7 +45,7 @@ class DataBuilder extends Model implements EntityContract
     {
         $tm = new TextGenerator();
 
-        $r     = $this->newInstanceData();
+        $r = $this->newInstanceData();
         $query = $r->newQuery();
 
         if (!empty($this->filter)) {

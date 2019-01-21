@@ -30,7 +30,7 @@ class CommonDataBuilder implements DataBuilderContract
             throw new \Exception(sprintf('%s is invalid', $classManager));
         }
 
-        $this->manager   = new $classManager();
+        $this->manager = new $classManager();
         $this->inflector = new Inflector();
     }
 
