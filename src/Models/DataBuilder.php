@@ -84,7 +84,7 @@ class DataBuilder extends Model implements EntityContract
     {
         $className = $this->class_name;
 
-        $arguments = (array) Yaml::parse($this->class_arguments);
+        $arguments = (array) Yaml::parse(strval($this->class_arguments));
 
         return new $className(...$arguments);
     }
