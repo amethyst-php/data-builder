@@ -35,6 +35,16 @@ class CommonDataBuilder implements DataBuilderContract
     }
 
     /**
+     * Retrieve manager
+     *
+     * @return \Railken\Amethyst\Managers\DataBuilderManager
+     */
+    public function getManager()
+    {
+        return $this->manager;
+    }
+
+    /**
      * Create a new instance of the query.
      *
      * @return \Illuminate\Database\Eloquent\Builder
