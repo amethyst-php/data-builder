@@ -35,7 +35,7 @@ class CommonDataBuilder implements DataBuilderContract
     }
 
     /**
-     * Retrieve manager
+     * Retrieve manager.
      *
      * @return \Railken\Amethyst\Managers\DataBuilderManager
      */
