@@ -31,6 +31,7 @@ class DataBuilderFaker extends Faker
         $bag->set('mock_data', Yaml::dump([
             'date' => '2018-01-01',
         ]));
+        $bag->set('include', 'bar');
 
         return $bag;
     }

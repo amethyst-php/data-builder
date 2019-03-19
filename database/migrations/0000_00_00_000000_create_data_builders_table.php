@@ -21,6 +21,7 @@ class CreateDataBuildersTable extends Migration
             $table->string('class_name')->nullable();
             $table->text('class_arguments')->nullable();
             $table->text('filter')->nullable();
+            $table->text('include')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -6,6 +6,7 @@ use Railken\Amethyst\Fakers\DataBuilderFaker;
 use Railken\Amethyst\Managers\DataBuilderManager;
 use Railken\Amethyst\Tests\BaseTest;
 use Railken\Lem\Support\Testing\TestableBaseTrait;
+use Symfony\Component\Yaml\Yaml;
 
 class DataBuilderTest extends BaseTest
 {
@@ -25,6 +26,14 @@ class DataBuilderTest extends BaseTest
      */
     protected $faker = DataBuilderFaker::class;
 
+    public function getDataBuilderFaker()
+    {
+        $bag = DataBuilderFaker::make()->parameters();
+        $bag->set('class_arguments', Yaml::dump([\Railken\Amethyst\Managers\FooManager::class]));
+
+        return $bag;
+    }
+
     public function testValidate()
     {
         $errors = $this->getManager()->getValidator()->raw([
@@ -42,7 +51,7 @@ class DataBuilderTest extends BaseTest
 
         $this->assertEquals(1, $errors->count());
 
-        $result = $this->getManager()->validateRaw($this->getManager()->create(DataBuilderFaker::make()->parameters())->getResource(), [
+        $result = $this->getManager()->validateRaw($this->getManager()->create($this->getDataBuilderFaker())->getResource(), [
             'date' => '2018-01-01',
         ]);
 
@@ -51,13 +60,13 @@ class DataBuilderTest extends BaseTest
 
     public function testBuild()
     {
-        $result = $this->getManager()->build($this->getManager()->create(DataBuilderFaker::make()->parameters())->getResource(), [
+        $result = $this->getManager()->build($this->getManager()->create($this->getDataBuilderFaker())->getResource(), [
             'date' => '2018-01-01',
         ]);
 
         $this->assertEquals(true, $result->ok());
 
-        $result = $this->getManager()->build($this->getManager()->create(DataBuilderFaker::make()->parameters()->set('filter', 'eq error'))->getResource(), [
+        $result = $this->getManager()->build($this->getManager()->create($this->getDataBuilderFaker()->set('filter', 'eq error'))->getResource(), [
             'date' => '2018-01-01',
         ]);
 
@@ -66,7 +75,7 @@ class DataBuilderTest extends BaseTest
 
     public function testClassNameNull()
     {
-        $result = $this->getManager()->build($this->getManager()->create(DataBuilderFaker::make()->parameters()->set('class_name', null))->getResource(), [
+        $result = $this->getManager()->build($this->getManager()->create($this->getDataBuilderFaker()->set('class_name', null))->getResource(), [
             'date' => '2018-01-01',
         ]);
 

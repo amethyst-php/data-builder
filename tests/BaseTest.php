@@ -7,9 +7,9 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
     /**
      * Setup the test environment.
      */
-    public function setUp()
+    public function setUp(): void
     {
-        $dotenv = new \Dotenv\Dotenv(__DIR__.'/..', '.env');
+        $dotenv = \Dotenv\Dotenv::create(__DIR__.'/..', '.env');
         $dotenv->load();
 
         parent::setUp();
@@ -21,6 +21,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
     {
         return [
             \Railken\Amethyst\Providers\DataBuilderServiceProvider::class,
+            \Railken\Amethyst\Providers\FooServiceProvider::class,
         ];
     }
 }

@@ -25,6 +25,7 @@ class DataBuilderSchema extends Schema
             Attributes\YamlAttribute::make('class_arguments'),
             Attributes\YamlAttribute::make('mock_data'),
             Attributes\YamlAttribute::make('input'),
+            Attributes\TextAttribute::make('include'),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
             Attributes\DeletedAtAttribute::make(),
