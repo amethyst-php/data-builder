@@ -25,7 +25,8 @@ use Symfony\Component\Yaml\Yaml;
  */
 class DataBuilder extends Model implements EntityContract
 {
-    use SoftDeletes, ConfigurableModel;
+    use SoftDeletes;
+    use ConfigurableModel;
 
     /**
      * Create a new Eloquent model instance.
