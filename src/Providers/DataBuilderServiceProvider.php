@@ -3,6 +3,7 @@
 namespace Railken\Amethyst\Providers;
 
 use Railken\Amethyst\Common\CommonServiceProvider;
+use Railken\Amethyst\Console\Commands\DataBuilderSeed;
 
 class DataBuilderServiceProvider extends CommonServiceProvider
 {
@@ -12,6 +13,8 @@ class DataBuilderServiceProvider extends CommonServiceProvider
     public function register()
     {
         parent::register();
+
+        $this->commands([DataBuilderSeed::class]);
 
         $this->app->register(\Railken\Template\TemplateServiceProvider::class);
     }
