@@ -31,6 +31,11 @@ class DataBuilderSeed extends Command
         });
 
         foreach ($managers as $classManager) {
+
+            if (!class_exists($classManager)) {
+                throw new \Exception(sprintf("Class %s doesn't exsits", $classManager));
+            }
+
             $dataBuilderRecord = $dataBuilderManager->updateOrCreateOrFail([
                 'name' => (new $classManager())->getName().' by dates',
             ], [
