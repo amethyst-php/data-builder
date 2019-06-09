@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'DataBuilder',
-    'description' => 'DataBuilder',
+    'name' => 'Data Builder',
+    'description' => 'Data Builder',
     'attributes' => []
 ];
