@@ -31,7 +31,6 @@ class DataBuilderSeed extends Command
         });
 
         foreach ($managers as $classManager) {
-
             if (!class_exists($classManager)) {
                 throw new \Exception(sprintf("Class %s doesn't exsits", $classManager));
             }
