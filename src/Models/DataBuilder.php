@@ -72,7 +72,7 @@ class DataBuilder extends Model implements EntityContract
     {
         $joiner = new Joiner($query);
         $class = get_class($dataBuilder->getManager()->newEntity());
-        $relations = Collection::make(Mapper::mapKeysRelation($class))
+        $relations = Collection::make(app('eloquent.mapper')->getFinder()->mapKeysRelation($class))
             ->filter(function ($item) {
                 return in_array($item, explode(',', $this->getIncludes()), true);
             })
@@ -83,7 +83,7 @@ class DataBuilder extends Model implements EntityContract
             })
             ->toArray();
 
-        Mapper::mapRelations($class, function ($prefix, $relation) use ($joiner, $relations) {
+        app('eloquent.mapper')->getFinder()->mapRelations($class, function ($prefix, $relation) use ($joiner, $relations) {
             $key = $prefix ? $prefix.'.'.$relation->name : $relation->name;
 
             if (!in_array($key, $relations, true)) {
