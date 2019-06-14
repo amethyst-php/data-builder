@@ -10,7 +10,6 @@ use Illuminate\Support\Collection;
 use Railken\Amethyst\Common\ConfigurableModel;
 use Railken\Amethyst\Contracts\DataBuilderContract;
 use Railken\EloquentMapper\Joiner;
-use Railken\EloquentMapper\Mapper;
 use Railken\LaraEye\Filter;
 use Railken\Lem\Contracts\EntityContract;
 use Railken\Template\Generators\TextGenerator;
