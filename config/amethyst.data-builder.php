@@ -13,14 +13,14 @@ return [
         'data-builder' => [
             'table'      => 'amethyst_data_builders',
             'comment'    => 'Data Builder',
-            'model'      => Railken\Amethyst\Models\DataBuilder::class,
-            'schema'     => Railken\Amethyst\Schemas\DataBuilderSchema::class,
-            'repository' => Railken\Amethyst\Repositories\DataBuilderRepository::class,
-            'serializer' => Railken\Amethyst\Serializers\DataBuilderSerializer::class,
-            'validator'  => Railken\Amethyst\Validators\DataBuilderValidator::class,
-            'authorizer' => Railken\Amethyst\Authorizers\DataBuilderAuthorizer::class,
-            'faker'      => Railken\Amethyst\Fakers\DataBuilderFaker::class,
-            'manager'    => Railken\Amethyst\Managers\DataBuilderManager::class,
+            'model'      => Amethyst\Models\DataBuilder::class,
+            'schema'     => Amethyst\Schemas\DataBuilderSchema::class,
+            'repository' => Amethyst\Repositories\DataBuilderRepository::class,
+            'serializer' => Amethyst\Serializers\DataBuilderSerializer::class,
+            'validator'  => Amethyst\Validators\DataBuilderValidator::class,
+            'authorizer' => Amethyst\Authorizers\DataBuilderAuthorizer::class,
+            'faker'      => Amethyst\Fakers\DataBuilderFaker::class,
+            'manager'    => Amethyst\Managers\DataBuilderManager::class,
         ],
     ],
 
@@ -36,7 +36,7 @@ return [
         'admin' => [
             'data-builder' => [
                 'enabled'    => true,
-                'controller' => Railken\Amethyst\Http\Controllers\Admin\DataBuildersController::class,
+                'controller' => Amethyst\Http\Controllers\Admin\DataBuildersController::class,
                 'router'     => [
                     'as'     => 'data-builder.',
                     'prefix' => '/data-builders',

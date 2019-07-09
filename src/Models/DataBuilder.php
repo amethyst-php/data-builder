@@ -1,14 +1,14 @@
 <?php
 
-namespace Railken\Amethyst\Models;
+namespace Amethyst\Models;
 
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use Railken\Amethyst\Common\ConfigurableModel;
-use Railken\Amethyst\Contracts\DataBuilderContract;
+use Amethyst\Common\ConfigurableModel;
+use Amethyst\Contracts\DataBuilderContract;
 use Railken\EloquentMapper\Joiner;
 use Railken\LaraEye\Filter;
 use Railken\Lem\Contracts\EntityContract;
@@ -64,7 +64,7 @@ class DataBuilder extends Model implements EntityContract
     }
 
     /**
-     * @param \Railken\Amethyst\Contracts\DataBuilderContract $dataBuilder
+     * @param \Amethyst\Contracts\DataBuilderContract $dataBuilder
      * @param \Illuminate\Database\Eloquent\Builder           $query
      */
     public function autoJoin(DataBuilderContract $dataBuilder, Builder $query)
@@ -117,7 +117,7 @@ class DataBuilder extends Model implements EntityContract
     /**
      * New instance data builder custom.
      *
-     * @return \Railken\Amethyst\Contracts\DataBuilderContract
+     * @return \Amethyst\Contracts\DataBuilderContract
      */
     public function newInstanceData()
     {

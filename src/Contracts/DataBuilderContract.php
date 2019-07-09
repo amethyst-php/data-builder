@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\Amethyst\Contracts;
+namespace Amethyst\Contracts;
 
 use Closure;
 use Illuminate\Database\Eloquent\Builder;

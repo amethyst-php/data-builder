@@ -1,11 +1,11 @@
 <?php
 
-namespace Railken\Amethyst\Console\Commands;
+namespace Amethyst\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
-use Railken\Amethyst\DataBuilders\CommonDataBuilder;
-use Railken\Amethyst\Managers\DataBuilderManager;
+use Amethyst\DataBuilders\CommonDataBuilder;
+use Amethyst\Managers\DataBuilderManager;
 use Symfony\Component\Yaml\Yaml;
 
 class DataBuilderSeed extends Command

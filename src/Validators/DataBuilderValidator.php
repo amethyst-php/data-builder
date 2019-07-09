@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Validators;
+namespace Amethyst\Validators;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator as IlluminateValidator;
-use Railken\Amethyst\Exceptions;
+use Amethyst\Exceptions;
 use Railken\Lem\Validator;
 
 class DataBuilderValidator extends Validator

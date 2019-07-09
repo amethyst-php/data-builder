@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\Amethyst\Fakers;
+namespace Amethyst\Fakers;
 
 use Faker\Factory;
 use Railken\Bag;
@@ -19,8 +19,8 @@ class DataBuilderFaker extends Faker
         $bag = new Bag();
         $bag->set('name', $faker->name);
         $bag->set('description', $faker->text);
-        $bag->set('class_name', \Railken\Amethyst\DataBuilders\CommonDataBuilder::class);
-        $bag->set('class_arguments', Yaml::dump([\Railken\Amethyst\Managers\DataBuilderManager::class]));
+        $bag->set('class_name', \Amethyst\DataBuilders\CommonDataBuilder::class);
+        $bag->set('class_arguments', Yaml::dump([\Amethyst\Managers\DataBuilderManager::class]));
         $bag->set('filter', 'id eq 1');
         $bag->set('input', Yaml::dump([
             'date' => [

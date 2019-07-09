@@ -1,18 +1,18 @@
 <?php
 
-namespace Railken\Amethyst\Managers;
+namespace Amethyst\Managers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Railken\Amethyst\Common\ConfigurableManager;
-use Railken\Amethyst\Exceptions;
-use Railken\Amethyst\Models\DataBuilder;
+use Amethyst\Common\ConfigurableManager;
+use Amethyst\Exceptions;
+use Amethyst\Models\DataBuilder;
 use Railken\Lem\Manager;
 use Railken\Lem\Result;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * @method \Railken\Amethyst\Validators\DataBuilderValidator getValidator()
+ * @method \Amethyst\Validators\DataBuilderValidator getValidator()
  */
 class DataBuilderManager extends Manager
 {

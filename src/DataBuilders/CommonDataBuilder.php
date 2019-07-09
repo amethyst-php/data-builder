@@ -1,18 +1,18 @@
 <?php
 
-namespace Railken\Amethyst\DataBuilders;
+namespace Amethyst\DataBuilders;
 
 use Closure;
 use Doctrine\Common\Inflector\Inflector;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Railken\Amethyst\Contracts\DataBuilderContract;
+use Amethyst\Contracts\DataBuilderContract;
 use Railken\Lem\Contracts\ManagerContract;
 
 class CommonDataBuilder implements DataBuilderContract
 {
     /**
-     * @var \Railken\Amethyst\Managers\DataBuilderManager
+     * @var \Amethyst\Managers\DataBuilderManager
      */
     protected $manager;
 
@@ -37,7 +37,7 @@ class CommonDataBuilder implements DataBuilderContract
     /**
      * Retrieve manager.
      *
-     * @return \Railken\Amethyst\Managers\DataBuilderManager
+     * @return \Amethyst\Managers\DataBuilderManager
      */
     public function getManager()
     {

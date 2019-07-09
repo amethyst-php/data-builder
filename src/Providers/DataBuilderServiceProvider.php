@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Providers;
+namespace Amethyst\Providers;
 
 use Illuminate\Support\Facades\Config;
-use Railken\Amethyst\Common\CommonServiceProvider;
-use Railken\Amethyst\Console\Commands\DataBuilderSeed;
+use Amethyst\Common\CommonServiceProvider;
+use Amethyst\Console\Commands\DataBuilderSeed;
 
 class DataBuilderServiceProvider extends CommonServiceProvider
 {
@@ -28,8 +28,8 @@ class DataBuilderServiceProvider extends CommonServiceProvider
         parent::boot();
 
         $dataBuilders = array_merge(
-            app('amethyst')->findClassesCached(base_path('app'), \Railken\Amethyst\Contracts\DataBuilderContract::class),
-            [\Railken\Amethyst\DataBuilders\CommonDataBuilder::class]
+            app('amethyst')->findClassesCached(base_path('app'), \Amethyst\Contracts\DataBuilderContract::class),
+            [\Amethyst\DataBuilders\CommonDataBuilder::class]
         );
 
         Config::set('amethyst.data-builder.data.data-builder.attributes.class_name.options', $dataBuilders);

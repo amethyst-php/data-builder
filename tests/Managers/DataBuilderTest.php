@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Managers;
+namespace Amethyst\Tests\Managers;
 
-use Railken\Amethyst\Fakers\DataBuilderFaker;
-use Railken\Amethyst\Managers\DataBuilderManager;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Fakers\DataBuilderFaker;
+use Amethyst\Managers\DataBuilderManager;
+use Amethyst\Tests\BaseTest;
 use Railken\Lem\Support\Testing\TestableBaseTrait;
 use Symfony\Component\Yaml\Yaml;
 
@@ -29,7 +29,7 @@ class DataBuilderTest extends BaseTest
     public function getDataBuilderFaker()
     {
         $bag = DataBuilderFaker::make()->parameters();
-        $bag->set('class_arguments', Yaml::dump([\Railken\Amethyst\Managers\FooManager::class]));
+        $bag->set('class_arguments', Yaml::dump([\Amethyst\Managers\FooManager::class]));
 
         return $bag;
     }
