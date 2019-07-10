@@ -2,13 +2,13 @@
 
 namespace Amethyst\Models;
 
+use Amethyst\Common\ConfigurableModel;
+use Amethyst\Contracts\DataBuilderContract;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use Amethyst\Common\ConfigurableModel;
-use Amethyst\Contracts\DataBuilderContract;
 use Railken\EloquentMapper\Joiner;
 use Railken\LaraEye\Filter;
 use Railken\Lem\Contracts\EntityContract;
@@ -65,7 +65,7 @@ class DataBuilder extends Model implements EntityContract
 
     /**
      * @param \Amethyst\Contracts\DataBuilderContract $dataBuilder
-     * @param \Illuminate\Database\Eloquent\Builder           $query
+     * @param \Illuminate\Database\Eloquent\Builder   $query
      */
     public function autoJoin(DataBuilderContract $dataBuilder, Builder $query)
     {

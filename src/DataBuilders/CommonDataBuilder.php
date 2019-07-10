@@ -2,11 +2,11 @@
 
 namespace Amethyst\DataBuilders;
 
+use Amethyst\Contracts\DataBuilderContract;
 use Closure;
 use Doctrine\Common\Inflector\Inflector;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Amethyst\Contracts\DataBuilderContract;
 use Railken\Lem\Contracts\ManagerContract;
 
 class CommonDataBuilder implements DataBuilderContract

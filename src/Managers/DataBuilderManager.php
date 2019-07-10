@@ -2,11 +2,11 @@
 
 namespace Amethyst\Managers;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Amethyst\Common\ConfigurableManager;
 use Amethyst\Exceptions;
 use Amethyst\Models\DataBuilder;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Railken\Lem\Manager;
 use Railken\Lem\Result;
 use Symfony\Component\Yaml\Yaml;

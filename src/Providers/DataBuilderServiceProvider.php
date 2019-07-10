@@ -2,9 +2,9 @@
 
 namespace Amethyst\Providers;
 
-use Illuminate\Support\Facades\Config;
 use Amethyst\Common\CommonServiceProvider;
 use Amethyst\Console\Commands\DataBuilderSeed;
+use Illuminate\Support\Facades\Config;
 
 class DataBuilderServiceProvider extends CommonServiceProvider
 {

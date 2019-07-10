@@ -2,9 +2,9 @@
 
 namespace Amethyst\Validators;
 
+use Amethyst\Exceptions;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator as IlluminateValidator;
-use Amethyst\Exceptions;
 use Railken\Lem\Validator;
 
 class DataBuilderValidator extends Validator
