@@ -25,7 +25,7 @@ class DataBuilderValidator extends Validator
             $validator = IlluminateValidator::make($data, $schema);
 
             foreach ($validator->errors()->getMessages() as $key => $error) {
-                $errors[] = new Exceptions\DataBuilderInputException($key, $error[0], isset($data[$key]) ? $data[$key] : null);
+                $errors[] = new Exceptions\DataBuilderInputException(strval($key), $error[0], isset($data[$key]) ? $data[$key] : null);
             }
         }
 

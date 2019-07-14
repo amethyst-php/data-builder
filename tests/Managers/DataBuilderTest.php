@@ -35,15 +35,18 @@ class DataBuilderTest extends BaseTest
     }
 
     public function testValidate()
-    {
-        $errors = $this->getManager()->getValidator()->raw([
+    {   
+        /** @var \Amethyst\Managers\DataBuilderManager */
+        $manager = $this->getManager();
+
+        $errors = $manager->getValidator()->raw([
             'date' => 'date_format:Y-m-d',
         ], [
             'date' => '2018-01-01',
         ]);
         $this->assertEquals(0, $errors->count());
 
-        $errors = $this->getManager()->getValidator()->raw([
+        $errors = $manager->getValidator()->raw([
             'date' => 'date_format:Y-m-d',
         ], [
             'date' => '2018-01-',
@@ -51,7 +54,7 @@ class DataBuilderTest extends BaseTest
 
         $this->assertEquals(1, $errors->count());
 
-        $result = $this->getManager()->validateRaw($this->getManager()->create($this->getDataBuilderFaker())->getResource(), [
+        $result = $manager->validateRaw($manager->create($this->getDataBuilderFaker())->getResource(), [
             'date' => '2018-01-01',
         ]);
 
@@ -60,13 +63,16 @@ class DataBuilderTest extends BaseTest
 
     public function testBuild()
     {
-        $result = $this->getManager()->build($this->getManager()->create($this->getDataBuilderFaker())->getResource(), [
+        /** @var \Amethyst\Managers\DataBuilderManager */
+        $manager = $this->getManager();
+
+        $result = $manager->build($manager->create($this->getDataBuilderFaker())->getResource(), [
             'date' => '2018-01-01',
         ]);
 
         $this->assertEquals(true, $result->ok());
 
-        $result = $this->getManager()->build($this->getManager()->create($this->getDataBuilderFaker()->set('filter', 'eq error'))->getResource(), [
+        $result = $manager->build($manager->create($this->getDataBuilderFaker()->set('filter', 'eq error'))->getResource(), [
             'date' => '2018-01-01',
         ]);
 
@@ -75,7 +81,10 @@ class DataBuilderTest extends BaseTest
 
     public function testClassNameNull()
     {
-        $result = $this->getManager()->build($this->getManager()->create($this->getDataBuilderFaker()->set('class_name', null))->getResource(), [
+        /** @var \Amethyst\Managers\DataBuilderManager */
+        $manager = $this->getManager();
+        
+        $result = $manager->build($manager->create($this->getDataBuilderFaker()->set('class_name', null))->getResource(), [
             'date' => '2018-01-01',
         ]);
 

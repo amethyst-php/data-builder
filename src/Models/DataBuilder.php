@@ -73,7 +73,7 @@ class DataBuilder extends Model implements EntityContract
         $class = get_class($dataBuilder->getManager()->newEntity());
         $relations = Collection::make(app('eloquent.mapper')->getFinder()->mapKeysRelation($class))
             ->filter(function ($item) {
-                return in_array($item, explode(',', $this->getIncludes()), true);
+                return in_array($item, $this->getIncludes(), true);
             })
             ->map(function ($item) use ($query) {
                 $query->with($item);

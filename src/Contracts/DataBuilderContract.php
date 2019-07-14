@@ -16,6 +16,13 @@ interface DataBuilderContract
     public function newQuery(): Builder;
 
     /**
+     * Retrieve manager.
+     *
+     * @return \Railken\Lem\Contracts\ManagerContract
+     */
+    public function getManager();
+
+    /**
      * Retrieve the table name.
      *
      * @return string

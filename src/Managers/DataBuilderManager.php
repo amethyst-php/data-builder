@@ -63,7 +63,7 @@ class DataBuilderManager extends Manager
     {
         $input = Yaml::parse((string) $builder->input);
 
-        if ($data === null) {
+        if ($data == null) {
             $data = Yaml::parse((string) $builder->mock_data);
         }
 
