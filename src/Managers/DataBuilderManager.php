@@ -14,6 +14,14 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * @method \Amethyst\Validators\DataBuilderValidator getValidator()
  */
+/**
+ * @method \Amethyst\Models\DataBuilder newEntity()
+ * @method \Amethyst\Schemas\DataBuilderSchema getSchema()
+ * @method \Amethyst\Repositories\DataBuilderRepository getRepository()
+ * @method \Amethyst\Serializers\DataBuilderSerializer getSerializer()
+ * @method \Amethyst\Validators\DataBuilderValidator getValidator()
+ * @method \Amethyst\Authorizers\DataBuilderAuthorizer getAuthorizer()
+ */
 class DataBuilderManager extends Manager
 {
     use ConfigurableManager;
