@@ -35,7 +35,7 @@ class DataBuilderTest extends BaseTest
     }
 
     public function testValidate()
-    {   
+    {
         /** @var \Amethyst\Managers\DataBuilderManager */
         $manager = $this->getManager();
 
@@ -83,7 +83,7 @@ class DataBuilderTest extends BaseTest
     {
         /** @var \Amethyst\Managers\DataBuilderManager */
         $manager = $this->getManager();
-        
+
         $result = $manager->build($manager->create($this->getDataBuilderFaker()->set('class_name', null))->getResource(), [
             'date' => '2018-01-01',
         ]);
