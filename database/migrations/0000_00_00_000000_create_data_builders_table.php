@@ -14,7 +14,7 @@ class CreateDataBuildersTable extends Migration
     {
         Schema::create(Config::get('amethyst.data-builder.data.data-builder.table'), function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name')->index();
             $table->text('description')->nullable();
             $table->text('input')->nullable();
             $table->text('mock_data')->nullable();
