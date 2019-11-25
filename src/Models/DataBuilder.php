@@ -14,6 +14,7 @@ use Railken\LaraEye\Filter;
 use Railken\Lem\Contracts\EntityContract;
 use Railken\Template\Generators\TextGenerator;
 use Symfony\Component\Yaml\Yaml;
+use Railken\EloquentMapper\Scopes\FilterScope;
 
 /**
  * @property object $input
@@ -50,49 +51,19 @@ class DataBuilder extends Model implements EntityContract
     {
         $tm = new TextGenerator();
 
-        $r = $this->newInstanceData();
-        $query = $r->newQuery();
+        $i = $this->newInstanceData();
 
-        if (!empty($this->filter)) {
-            $filter = new Filter($r->getTableName(), $selectable);
-            $filter->build($query, $tm->generateAndRender($this->filter, $data));
-        }
+        $query = $i->newQuery();
+        $manager = $i->getManager();
 
-        $this->autoJoin($r, $query);
-
+        app('amethyst')->filter(
+            $query, 
+            $tm->generateAndRender($this->filter, $data), 
+            $manager->newEntity(), 
+            $manager->getAgent()
+        );
+        
         return $query;
-    }
-
-    /**
-     * @param \Amethyst\Contracts\DataBuilderContract $dataBuilder
-     * @param \Illuminate\Database\Eloquent\Builder   $query
-     */
-    public function autoJoin(DataBuilderContract $dataBuilder, Builder $query)
-    {
-        $joiner = new Joiner($query);
-        $class = get_class($dataBuilder->getManager()->newEntity());
-        $relations = Collection::make(app('eloquent.mapper')->getFinder()->mapKeysRelation($class))
-            ->filter(function ($item) {
-                return in_array($item, $this->getIncludes(), true);
-            })
-            ->map(function ($item) use ($query) {
-                $query->with($item);
-
-                return $item;
-            })
-            ->toArray();
-
-        app('eloquent.mapper')->getFinder()->mapRelations($class, function ($prefix, $relation) use ($joiner, $relations) {
-            $key = $prefix ? $prefix.'.'.$relation->name : $relation->name;
-
-            if (!in_array($key, $relations, true)) {
-                return;
-            }
-
-            $joiner->joinRelations($key);
-
-            return [$key, [$key]];
-        });
     }
 
     /**
