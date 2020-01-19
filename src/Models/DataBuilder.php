@@ -2,7 +2,7 @@
 
 namespace Amethyst\Models;
 
-use Amethyst\Common\ConfigurableModel;
+use Amethyst\Core\ConfigurableModel;
 use Amethyst\Contracts\DataBuilderContract;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
