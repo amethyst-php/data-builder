@@ -3,18 +3,14 @@
 namespace Amethyst\Models;
 
 use Amethyst\Core\ConfigurableModel;
-use Amethyst\Contracts\DataBuilderContract;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use Railken\EloquentMapper\Joiner;
-use Railken\LaraEye\Filter;
 use Railken\Lem\Contracts\EntityContract;
 use Railken\Template\Generators\TextGenerator;
 use Symfony\Component\Yaml\Yaml;
-use Railken\EloquentMapper\Scopes\FilterScope;
 
 /**
  * @property object $input
@@ -57,12 +53,12 @@ class DataBuilder extends Model implements EntityContract
         $manager = $i->getManager();
 
         app('amethyst')->filter(
-            $query, 
-            $tm->generateAndRender($this->filter, $data), 
-            $manager->newEntity(), 
+            $query,
+            $tm->generateAndRender($this->filter, $data),
+            $manager->newEntity(),
             $manager->getAgent()
         );
-        
+
         return $query;
     }
 

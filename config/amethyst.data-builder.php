@@ -24,10 +24,10 @@ return [
             'attributes' => [
                 'class_name' => [
                     'options' => [
-                        'common' => \Amethyst\DataBuilders\CommonDataBuilder::class
-                    ]
-                ]
-            ]
+                        'common' => \Amethyst\DataBuilders\CommonDataBuilder::class,
+                    ],
+                ],
+            ],
         ],
     ],
 ];
