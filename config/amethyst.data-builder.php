@@ -21,27 +21,13 @@ return [
             'authorizer' => Amethyst\Authorizers\DataBuilderAuthorizer::class,
             'faker'      => Amethyst\Fakers\DataBuilderFaker::class,
             'manager'    => Amethyst\Managers\DataBuilderManager::class,
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Http configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure the routes
-    |
-    */
-    'http' => [
-        'admin' => [
-            'data-builder' => [
-                'enabled'    => true,
-                'controller' => Amethyst\Http\Controllers\Admin\DataBuildersController::class,
-                'router'     => [
-                    'as'     => 'data-builder.',
-                    'prefix' => '/data-builders',
-                ],
-            ],
+            'attributes' => [
+                'class_name' => [
+                    'options' => [
+                        'common' => \Amethyst\DataBuilders\CommonDataBuilder::class
+                    ]
+                ]
+            ]
         ],
     ],
 ];
