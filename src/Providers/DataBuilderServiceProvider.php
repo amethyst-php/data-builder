@@ -27,11 +27,11 @@ class DataBuilderServiceProvider extends CommonServiceProvider
     {
         parent::boot();
 
-        $dataBuilders = array_merge(
+        /*$dataBuilders = array_merge(
             app('amethyst')->findClassesCached(base_path('app'), \Amethyst\Contracts\DataBuilderContract::class),
             [\Amethyst\DataBuilders\CommonDataBuilder::class]
-        );
+        );*/
 
-        Config::set('amethyst.data-builder.data.data-builder.attributes.class_name.options', $dataBuilders);
+        Config::set('amethyst.data-builder.data.data-builder.attributes.class_name.options', []);
     }
 }
