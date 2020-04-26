@@ -33,7 +33,7 @@ class DataBuilderServiceProvider extends CommonServiceProvider
         );*/
 
         Config::set('amethyst.data-builder.data.data-builder.attributes.class_name.options', [
-            \Amethyst\DataBuilders\CommonDataBuilder::class
+            \Amethyst\DataBuilders\CommonDataBuilder::class,
         ]);
     }
 }

@@ -5,7 +5,6 @@ namespace Amethyst\Console\Commands;
 use Amethyst\DataBuilders\CommonDataBuilder;
 use Amethyst\Managers\DataBuilderManager;
 use Illuminate\Console\Command;
-use Illuminate\Support\Arr;
 use Symfony\Component\Yaml\Yaml;
 
 class DataBuilderSeed extends Command
@@ -29,7 +28,6 @@ class DataBuilderSeed extends Command
         $managers = app('amethyst')->getData();
 
         foreach ($managers as $manager) {
-
             $dataBuilderRecord = $dataBuilderManager->updateOrCreateOrFail([
                 'name' => $manager->getName().' by dates',
             ], [
