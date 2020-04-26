@@ -26,20 +26,15 @@ class DataBuilderSeed extends Command
     {
         $dataBuilderManager = new DataBuilderManager();
 
-        $managers = app('amethyst')->getData()->map(function ($data) {
-            return Arr::get($data, 'manager');
-        });
+        $managers = app('amethyst')->getData();
 
-        foreach ($managers as $classManager) {
-            if (!class_exists($classManager)) {
-                throw new \Exception(sprintf("Class %s doesn't exsits", $classManager));
-            }
+        foreach ($managers as $manager) {
 
             $dataBuilderRecord = $dataBuilderManager->updateOrCreateOrFail([
-                'name' => (new $classManager())->getName().' by dates',
+                'name' => $manager->getName().' by dates',
             ], [
                 'class_name'      => CommonDataBuilder::class,
-                'class_arguments' => $classManager,
+                'class_arguments' => get_class($manager),
                 'description'     => 'Retrieve data between dates',
                 'filter'          => 'created_at gte "{{ from|date("Y-m-d 00:00:00") }}" and created_at lte "{{ to|date("Y-m-d 23:59:59") }}"',
                 'input'           => Yaml::dump([
@@ -59,10 +54,10 @@ class DataBuilderSeed extends Command
             ])->getResource();
 
             $dataBuilderRecord = $dataBuilderManager->updateOrCreateOrFail([
-                'name' => (new $classManager())->getName().' by id',
+                'name' => $manager->getName().' by id',
             ], [
                 'class_name'      => CommonDataBuilder::class,
-                'class_arguments' => $classManager,
+                'class_arguments' => get_class($manager),
                 'description'     => 'Retrieve data by id',
                 'filter'          => 'id eq "{{ id }}"',
                 'input'           => Yaml::dump([
